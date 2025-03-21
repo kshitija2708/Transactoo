@@ -14,7 +14,7 @@ export const Appbar = ({
     onSignin,
     onSignout
 }: AppbarProps) => {
-    return <div className="flex justify-between border-[#011C40] bg-[#011C40] px-4">
+    return <div className="flex justify-between  bg-gradient-to-r from-purple-800 via-purple-400 to-purple-800 px-4">
         <div className="text-2xl  font-stretch-condensed text-white  flex flex-col justify-center">
             SwiftPay
         </div>

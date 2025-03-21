@@ -35,11 +35,11 @@ export default function Transfers() {
 
     return (
         <div className="p-6">
-            <h2 className="text-xl font-bold mb-4">Transaction History</h2>
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-200 via-purple-400 to-purple-800 bg-clip-text text-transparent  mb-8 ">Transaction History</h2>
             <table className="min-w-full border-collapse border border-gray-300">
                 <thead>
-                    <tr className="bg-gray-200">
-                        <th className="border p-2">Transaction ID</th>
+                    <tr className="bg-purple-300">
+                        <th className="border-purple-200 p-2">Transaction ID</th>
                         <th className="border p-2">From</th>
                         <th className="border p-2">To</th>
                         <th className="border p-2">Amount</th>
@@ -48,7 +48,7 @@ export default function Transfers() {
                 </thead>
                 <tbody>
                     {transfers.map((transfer) => (
-                        <tr key={transfer.id} className="text-center">
+                        <tr key={transfer.id} className="text-center text-white">
                             <td className="border p-2">{transfer.transactionId}</td>
                             <td className="border p-2">{transfer.fromUser.name} </td>
                             <td className="border p-2">{transfer.toUser.name} </td>

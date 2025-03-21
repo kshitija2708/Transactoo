@@ -1,6 +1,11 @@
 "use client";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
+// @ts-ignore
+
+import {FcGoogle} from "react-icons/fc"
+import { Github } from "lucide-react";
+// import Google from "next-auth/providers/google";
 
 export default function SignInPage() {
   const [phone, setPhone] = useState("");
@@ -21,9 +26,9 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-md w-96 text-center">
-        <h2 className="text-2xl font-bold mb-6">Sign in to Your Account</h2>
+    <div className="flex items-center justify-center min-h-screen bg-[#111111]">
+      <div className="bg-[#000000] p-8 rounded-lg shadow-md w-96 text-center">
+        <h2 className="text-2xl  text-white font-bold mb-6">Sign in to Your Account</h2>
 
         {/* Phone + Password Sign-In */}
         <input
@@ -43,28 +48,32 @@ export default function SignInPage() {
 
         <button
           onClick={handleSignIn}
-          className="w-full bg-blue-500 hover:bg-blue-700 text-white p-3 rounded-lg mt-4"
+          className="w-full bg-purple-800 hover:bg-purple-700 text-white p-3 rounded-lg mt-4"
         >
           Sign in
         </button>
 
-        <p className="my-4">or</p>
+        <p className=" text-white font-bold text-md my-4">or</p>
 
         {/* Google Sign-In */}
+        <div className="flex justify-center">
         <button
           onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
-          className="w-full bg-red-500 hover:bg-red-700 text-white p-3 rounded-lg mt-2"
+          className="w-full bg-purple-500 hover:bg-purple-700 text-white p-3 rounded-lg mt-2 flex items-center gap-8"
         >
-          Sign in with Google
+        <FcGoogle className="text-white w-6 h-6 ml-8"/>
+         <span> Sign in with Google</span>
         </button>
-
+        </div>
         {/* GitHub Sign-In */}
+        <div className="flex justify-center">
+            
         <button
           onClick={() => signIn("github", { callbackUrl: "/dashboard" })}
-          className="w-full bg-gray-800 hover:bg-gray-900 text-white p-3 rounded-lg mt-2"
-        >
-          Sign in with GitHub
-        </button>
+          className="w-full bg-purple-800 hover:bg-purple-900 text-white p-3 rounded-lg mt-2 flex items-center gap-4"
+        ><Github className="text-white w-6 h-6 ml-8"/>
+    <span> Sign in with GitHub</span>
+        </button></div>
       </div>
     </div>
   );
