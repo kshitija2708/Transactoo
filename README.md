@@ -16,30 +16,18 @@ A full-stack multi-app monorepo for handling transactions using Next.js, Express
 
 ---
 
-## **Project Structure**  
-```
-/Transactoo
-│── apps/
-│   ├── user-app/             # Next.js user application
-│   ├── merchant-app/         # Next.js merchant application
-│   ├── bank_webhook_handler/ # Express.js webhook handler for transactions
-│── packages/
-│   ├── db/                   # Database schema, migrations, and Prisma ORM
-│── .env.example              # Example environment variables
-│── turbo.json                # Turborepo configuration
-│── package.json
-└── README.md
 
 
-## **📌 Setup & Installation**  
 
-### **1️⃣ Install Dependencies**  
+## ** Setup & Installation**  
+
+### **1 Install Dependencies**  
 Run the following command from the **root folder**:  
 ```sh
 npm install
 ```
 
-### **2️⃣ Setup Environment Variables**  
+### **2️ Setup Environment Variables**  
 - Copy `.env.example` and rename it to `.env`  
 - Place it **in the same directory as `.env.example`**  
 - Fill in the required credentials 
@@ -56,7 +44,7 @@ GITHUB_CLIENT_ID=your_github_client_id
 GITHUB_CLIENT_SECRET=your_github_client_secret
 ```
 
-### **3️⃣ Generate Prisma Client**  
+### **3️ Generate Prisma Client**  
 Navigate to the **database package** and migrate databse and then generate the Prisma client:  
 ```sh
 cd packages/db
@@ -64,7 +52,7 @@ npx prisma migrate dev
 npx prisma generate
 ```
 
-### **4️⃣ Run the Project**  
+### **4️ Run the Project**  
 Start all applications (**user-app, merchant-app, webhook handler**) with:  
 ```sh
 npm run dev
@@ -77,7 +65,7 @@ This will:
 
 ---
 
-## **🛠 Development & Debugging**  
+ 
 ### **Migrate Database (If Needed)**  
 If you update the Prisma schema, apply migrations:  
 ```sh
