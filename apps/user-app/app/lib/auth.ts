@@ -103,7 +103,6 @@ console.log(existingUser)
       return true; 
     },
     
-    
     async session({ token, session }: any) {
       session.user.id = token.sub;
       return session;
