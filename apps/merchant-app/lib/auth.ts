@@ -4,8 +4,8 @@ const db=new PrismaClient();
 export const authOptions = {
     providers: [
         GoogleProvider({
-            clientId: "",
-            clientSecret: ""
+            clientId: process.env.GOOGLE_CLIENT_ID!,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET!
         })
     ],
     callbacks: {
@@ -45,6 +45,5 @@ export const authOptions = {
         return true;
       }
     },
-    
-    secret: process.env.NEXTAUTH_SECRET
+    secret: process.env.NEXTAUTH_SECRET || "secret"
   }
