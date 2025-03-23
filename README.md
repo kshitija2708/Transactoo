@@ -93,5 +93,8 @@ npm run dev
  **Modern UI with Next.js**  
 **Turborepo for Monorepo Management**  
 
-##ScreenShots##
-![alt text](<Screenshot 2025-03-21 160252.png>) ![alt text](<Screenshot 2025-03-21 160916.png>) ![alt text](<Screenshot 2025-03-21 160941.png>) ![alt text](<Screenshot 2025-03-21 161010.png>)
+## Screenshots
+![Screenshot 1](Screenshot_2025-03-21_160252.png)
+![Screenshot 2](Screenshot_2025-03-21_160916.png)
+![Screenshot 3](Screenshot_2025-03-21_160941.png)
+![Screenshot 4](Screenshot_2025-03-21_161010.png)
