@@ -94,7 +94,7 @@ npm run dev
 **Turborepo for Monorepo Management**  
 
 ## Screenshots
-![Screenshot 1](Screenshot_2025-03-21_160252.png)
-![Screenshot 2](Screenshot_2025-03-21_160916.png)
-![Screenshot 3](Screenshot_2025-03-21_160941.png)
-![Screenshot 4](Screenshot_2025-03-21_161010.png)
+![Screenshot 1](assets/Screenshot%202025-03-21%20160252.png)
+![Screenshot 2](assets/Screenshot%202025-03-21%20160916.png)
+![Screenshot 3](assets/Screenshot%202025-03-21%20160941.png)
+![Screenshot 4](assets/Screenshot%202025-03-21%20161010.png)
