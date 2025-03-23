@@ -1,81 +1,107 @@
-# Turborepo starter
 
-This is an official starter Turborepo.
+# **Transactoo** 
+A full-stack multi-app monorepo for handling transactions using Next.js, Express.js, and PostgreSQL. Supports authentication via **NextAuth** with **Phone Number, Google, and GitHub**.  
 
-## Using this example
+## **Tech Stack Used**  
+- **Monorepo Management:** [Turborepo](https://turbo.build/)  
+- **Frontend:** [Next.js](https://nextjs.org/)  
+- **Backend:** [Express.js](https://expressjs.com/)  
+- **Database:** [PostgreSQL](https://www.postgresql.org/)  
+- **ORM:** [Prisma](https://www.prisma.io/)  
+- **Language:** [TypeScript](https://www.typescriptlang.org/)  
+- **Authentication:** [NextAuth](https://next-auth.js.org/)  
+  -  **Sign in with Phone Number**  
+  -  **Sign in with Google**  
+  -  **Sign in with GitHub**  
 
-Run the following command:
+---
 
+## **Project Structure**  
+```
+/Transactoo
+│── apps/
+│   ├── user-app/             # Next.js user application
+│   ├── merchant-app/         # Next.js merchant application
+│   ├── bank_webhook_handler/ # Express.js webhook handler for transactions
+│── packages/
+│   ├── db/                   # Database schema, migrations, and Prisma ORM
+│── .env.example              # Example environment variables
+│── turbo.json                # Turborepo configuration
+│── package.json
+└── README.md
+
+
+## **📌 Setup & Installation**  
+
+### **1️⃣ Install Dependencies**  
+Run the following command from the **root folder**:  
 ```sh
-npx create-turbo@latest
+npm install
 ```
 
-## What's inside?
+### **2️⃣ Setup Environment Variables**  
+- Copy `.env.example` and rename it to `.env`  
+- Place it **in the same directory as `.env.example`**  
+- Fill in the required credentials 
 
-This Turborepo includes the following packages/apps:
+#### **Example `.env` file:**  
+```env
+DATABASE_URL=postgres://username:password@localhost:5432/transactoo
+NEXTAUTH_SECRET=your_secret_key
 
-### Apps and Packages
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
+GITHUB_CLIENT_ID=your_github_client_id
+GITHUB_CLIENT_SECRET=your_github_client_secret
 ```
 
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
+### **3️⃣ Generate Prisma Client**  
+Navigate to the **database package** and migrate databse and then generate the Prisma client:  
+```sh
+cd packages/db
+npx prisma migrate dev
+npx prisma generate
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
+### **4️⃣ Run the Project**  
+Start all applications (**user-app, merchant-app, webhook handler**) with:  
+```sh
+npm run dev
 ```
 
-## Useful Links
+This will:  
+ Start `user-app` (**Next.js**)  
+ Start `merchant-app` (**Next.js**)  
+ Start `bank_webhook_handler` (**Express.js**)  
 
-Learn more about the power of Turborepo:
+---
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+## **🛠 Development & Debugging**  
+### **Migrate Database (If Needed)**  
+If you update the Prisma schema, apply migrations:  
+```sh
+cd packages/db
+npx prisma migrate dev --name init
+```
+
+### **Run a Specific App**  
+To run **only a single app**, navigate to its folder and start it manually:  
+```sh
+cd apps/user-app
+npm run dev
+```
+
+
+
+---
+
+## **Features**  
+ **Multi-App Monorepo** (User, Merchant, Webhook handler)  
+ **Authentication with Phone, Google, GitHub**  
+**Secure Transaction Handling**  
+ **Database ORM with Prisma**  
+ **Express.js Webhook Handler for Banks**  
+ **Modern UI with Next.js**  
+**Turborepo for Monorepo Management**  
+
