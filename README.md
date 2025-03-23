@@ -19,7 +19,7 @@ A full-stack multi-app monorepo for handling transactions using Next.js, Express
 
 
 
-## ** Setup & Installation**  
+## Setup & Installation  
 
 ### **1 Install Dependencies**  
 Run the following command from the **root folder**:  
@@ -94,4 +94,7 @@ npm run dev
 **Turborepo for Monorepo Management**  
 
 ## Screenshots
-![Signin](<Screenshot 2025-03-21 160252.png>)
+![SendMoney](https://github.com/user-attachments/assets/40830726-b891-4fa7-8efa-c5d5d2c656f8)
+![SignIn](https://github.com/user-attachments/assets/05d68cdb-a120-48a0-8198-238f39aed523)
+![transfers](https://github.com/user-attachments/assets/76ad8353-bf9b-42fb-a928-1152c46a16c1)
+![Transfer](https://github.com/user-attachments/assets/5b25bf86-ac37-4dd2-9cac-7a156b4f958f)
