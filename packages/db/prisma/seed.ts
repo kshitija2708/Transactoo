@@ -12,6 +12,8 @@ async function main() {
       number: '9370492280',
       password: hashedPassword1,
       name: 'Kshitija',
+      googleId:"none",
+      githubId:"none",
       onRamp: {
         create: {
           startTime: new Date(),
@@ -85,6 +87,8 @@ async function main() {
       number: '1234567890',
       password: hashedPassword2,
       name: '12345678',
+      googleId:"none",
+      githubId:"none",
       onRamp: {
         create: {
           startTime: new Date(),

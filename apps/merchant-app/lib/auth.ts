@@ -33,6 +33,7 @@ export const authOptions = {
           create: {
             email: user.email,
             name: user.name,
+            googleId:"google",
             auth_type: account.provider === "google" ? "Google" : "Github" // Use a prisma type here
           },
           update: {
@@ -44,5 +45,6 @@ export const authOptions = {
         return true;
       }
     },
-    secret: process.env.NEXTAUTH_SECRET || "secret"
+    
+    secret: process.env.NEXTAUTH_SECRET
   }

@@ -4,7 +4,15 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [".next/**", "!.next/cache/**"],
+      "env":
+      [
+        "NEXTAUTH_SECRET",
+"GOOGLE_CLIENT_ID",
+"GOOGLE_CLIENT_SECRET",
+"GITHUB_CLIENT_ID",
+"GITHUB_CLIENT_SECRET"
+      ]
     },
     "lint": {
       "dependsOn": ["^lint"]
