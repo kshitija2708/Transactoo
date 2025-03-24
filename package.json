@@ -14,6 +14,7 @@
   },
   "devDependencies": {
     "@repo/db": "*",
+    "@repo/store":"*",
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "prettier": "^3.2.5",

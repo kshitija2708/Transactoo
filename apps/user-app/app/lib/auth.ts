@@ -74,8 +74,8 @@ export const authOptions = {
               email: user.email,
               number:"",
               password:"",
-              googleId: account.provider === "google" ? user.id : null,
-              githubId: account.provider === "github" ? user.id : null
+              
+            
               
             },
           });
@@ -89,8 +89,7 @@ console.log(existingUser)
             await db.user.update({
               where: { email: user.email },
               data: {
-                googleId: account.provider === "google" ? account.id : existingUser.googleId,
-                githubId: account.provider === "github" ? account.id : existingUser.githubId,
+               
               },
             });
           }
