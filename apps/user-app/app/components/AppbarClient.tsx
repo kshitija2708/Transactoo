@@ -7,8 +7,8 @@ import { useRouter } from 'next/navigation'
     const router=useRouter();
     return (
         <div><Appbar onSignin={signIn} onSignout={async()=>{
-            await signOut()
-            router.push('/api/auth/signin')
+            await signOut({callbackUrl:"/home"})
+            
         }} user={session.data?.user}/></div>
     )
  }

@@ -1,11 +1,11 @@
 "use client";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
-// @ts-ignore
+
 
 import {FcGoogle} from "react-icons/fc"
 import { Github } from "lucide-react";
-// import Google from "next-auth/providers/google";
+
 
 export default function SignInPage() {
   const [phone, setPhone] = useState("");
@@ -15,7 +15,7 @@ export default function SignInPage() {
     const res = await signIn("credentials", {
       phone,
       password,
-      redirect: false, // Set to false for debugging
+      redirect: false,
     });
 
     if (res?.error) {
@@ -24,6 +24,7 @@ export default function SignInPage() {
       window.location.href = "/dashboard"; // Redirect manually
     }
   };
+ 
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#111111]">

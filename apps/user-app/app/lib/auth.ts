@@ -42,10 +42,36 @@ export const authOptions = {
               phone: existingUser.number,
             };
           }
+         
           return null;
         }
+        else{
+          const hashedPassword = await bcrypt.hash(credentials.password, 10);
+          const newUser  = await db.user.create({
+            data: {
+              number: credentials.phone,
+              password: hashedPassword,
+              name: "", // You can set a default name or handle it differently
+              email: "", // You can set a default email or handle it differently
+            },
+          });
 
-        return null;
+          // Optionally create a balance for the new user
+          await db.balance.create({
+            data: { userId: Number(newUser .id), amount: Math.random() * 1000, locked: 0 },
+          });
+
+          return {
+            id: newUser .id.toString(),
+            name: newUser .name,
+            email: newUser .email,
+            phone: newUser .number,
+          };
+        
+        }
+        
+
+      
       },
     }),
   ],
