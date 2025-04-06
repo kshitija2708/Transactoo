@@ -4,20 +4,20 @@ import { Card } from "@repo/ui/card";
 import { Center } from "@repo/ui/Center";
 import { TextInput } from "@repo/ui/TextInput";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation"; // Import useRouter for navigation
+import { useRouter } from "next/navigation"; 
 import { p2pTransfer } from "../lib/actions/p2pTransfer";
 import Confetti from "react-confetti";
 
 export function P2P() {
     const [number, setNumber] = useState("");
     const [amount, setAmount] = useState("");
-    const [isSuccess, setIsSuccess] = useState(false); // State to control confetti
+    const [isSuccess, setIsSuccess] = useState(false);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [windowHeight, setWindowHeight] = useState(window.innerHeight);
-    const [successMessage, setSuccessMessage] = useState(""); // State for success message
-    const router = useRouter(); // Initialize useRouter
+    const [successMessage, setSuccessMessage] = useState(""); 
+    const router = useRouter(); 
 
-    // Update window dimensions on resize
+    
     useEffect(() => {
         const handleResize = () => {
             setWindowWidth(window.innerWidth);
@@ -30,12 +30,12 @@ export function P2P() {
 
     const handleTransfer = async () => {
         const success = await p2pTransfer(number, Number(amount));
-        console.log("Transfer success:", success); // Debugging line
+        console.log("Transfer success:", success); 
         if (success) {
             setIsSuccess(true);
             setSuccessMessage("Transfer successful!"); 
             setNumber("")
-            setAmount("")// Set success message
+            setAmount("")
             setTimeout(() => {
                 setIsSuccess(false); 
                 router.push("/transactions");
