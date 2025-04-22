@@ -10,6 +10,7 @@ import { OnRampTransactions } from "../../components/OnRampTransaction";
 const prisma =new PrismaClient();
 async function getBalance() {
     const session = await getServerSession(authOptions);
+    console.log("seSsion id",session?.user?.id)
     const balance = await prisma.balance.findUnique({
         where: {
             userId: Number(session?.user?.id)

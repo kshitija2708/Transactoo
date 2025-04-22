@@ -14,6 +14,9 @@ model User {
   number      String  @unique
   password    String
   balance Balance[]
+  merchantTransaction MerchantTransaction[]
+  bill Bill[]
+  billparticipant BillParticipant[]
   onRamp OnRampTransaction[]
     sentTransfers    TransferP2P[]       @relation(name: "FromUserRelation")
   receivedTransfers TransferP2P[]       @relation(name: "ToUserRelation")
@@ -23,19 +26,33 @@ model Merchant {
   id          Int     @id @default(autoincrement())
   email       String  @unique
   name        String?
+  
   auth_type   AuthType   
+   paymentsReceived MerchantTransaction[]
+}
+model MerchantTransaction{
+  id Int @id @default(autoincrement())
+  amount Int
+   status OnRampStatus @default(Processing)
+  timestamp DateTime @default(now())
+  userId Int
+  merchantId Int
+  transactionId String @default(uuid())
+  user User @relation(fields:[userId],references: [id])
+  merchant Merchant @relation(fields: [merchantId],references:[id])
 }
 model Balance {
   id Int @id @default(autoincrement())
   userId Int @unique
   amount Int
   locked Int 
-  user User @relation(fields:[userId],references:[id])
+  user User? @relation(fields:[userId],references:[id])
+  
 }
 model TransferP2P {
   id         Int          @id @default(autoincrement())
   amount     Int
-  timestamp  DateTime
+  timestamp  DateTime     
   fromUserId Int
   fromUser   User         @relation(name: "FromUserRelation", fields: [fromUserId], references: [id])
   toUserId   Int
@@ -44,7 +61,7 @@ model TransferP2P {
 }
 model OnRampTransaction{
   id Int @id @default(autoincrement())
-  status OnRampStatus
+  status OnRampStatus @default(Processing)
   token String @unique
   provider String
   amount Int
@@ -62,4 +79,24 @@ Processing
 enum AuthType {
   Google
   Github
+}
+model Bill{
+  id Int @unique  @default(autoincrement())
+  title String
+  totalAmount Int 
+  createdBy Int
+  createdAt DateTime @default(now())
+  creator User @relation(fields:[createdBy],references: [id])
+  participants BillParticipant[]
+
+
+}
+model BillParticipant{
+  id Int @unique @default(autoincrement())
+  userId Int
+  billId Int
+  amount Int
+  paid Boolean @default(false)
+  user User @relation(fields:[userId],references: [id])
+  bill Bill @relation(fields: [billId],references: [id])
 }

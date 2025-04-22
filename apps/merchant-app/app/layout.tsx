@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Providers } from "../provider";
 
 import { Montserrat } from "next/font/google";
+import { AppbarClient } from "../components/AppbarClient";
 
 const montserrat = Montserrat({ subsets: ["latin"], weight: ["400", "700"], display: "swap" });
 
@@ -19,9 +20,8 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en">
-      <Providers>
-        <body className={montserrat.className}>{children}</body>
-      </Providers>
+     <body className={montserrat.className}><Providers>
+     <AppbarClient/>{children}  </Providers></body>
     </html>
   );
 }
