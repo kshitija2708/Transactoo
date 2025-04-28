@@ -20,7 +20,7 @@ export async function GET() {
                 ],
             },
             
-            select: { 
+            select: {    
                 id: true,
                 amount: true,
                 timestamp: true,

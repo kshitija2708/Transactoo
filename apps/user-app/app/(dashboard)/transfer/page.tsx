@@ -11,7 +11,11 @@ const prisma =new PrismaClient();
 async function getBalance() {
     const session = await getServerSession(authOptions);
     console.log("seSsion id",session?.user?.id)
-    const balance = await prisma.balance.findUnique({
+    if (!session || !session.user || !session.user.id) {
+        throw new Error("Unauthorized"); // or redirect to login
+    }
+
+    const balance = await prisma.balance.findFirst({
         where: {
             userId: Number(session?.user?.id)
         }

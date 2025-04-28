@@ -10,14 +10,17 @@ import { Github } from "lucide-react";
 export default function SignInPage() {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
-
+   const[name,setName]=useState("")
+   const [email,setEmail]=useState("")
   const handleSignIn = async () => {
     const res = await signIn("credentials", {
       phone,
       password,
-      redirect: false,
+      email,
+      name,
+      redirect: true,
     });
-
+        
     if (res?.error) {
       alert("Invalid credentials");
     } else {
@@ -32,6 +35,20 @@ export default function SignInPage() {
         <h2 className="text-2xl  text-white font-bold mb-6">Sign in to Your Account</h2>
 
         {/* Phone + Password Sign-In */}
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="w-full p-2 border rounded-lg mt-3"
+        />
+           <input
+          type="text"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full p-2 border rounded-lg mt-3"
+        />
         <input
           type="text"
           placeholder="Phone number"
