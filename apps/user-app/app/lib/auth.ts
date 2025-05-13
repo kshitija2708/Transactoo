@@ -97,8 +97,8 @@ export const authOptions = {
               data: {
                 name: user.name || "",
                 email: user.email || "",
-                number: "", // no phone number for OAuth users
-                password: "", // no password for OAuth users
+                number: "", 
+                password: "", 
               },
             });
 

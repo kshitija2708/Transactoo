@@ -12,10 +12,10 @@ interface User {
 
 export function Profile() {
   const user: User = {
-    name: "John Doe",
-    phoneno: "123-456-7890",
-    bankName: "XYZ Bank",
-    lockedBalance: 2500.75,
+    name: "Kshitija Jonpelliwar",
+    phoneno: "8888888888",
+    bankName: "HDFC BANK",
+    lockedBalance: 2500,
   }
 
   return (        
@@ -45,8 +45,8 @@ export function Profile() {
         </div>
 
         <div>
-          <p className="text-sm text-white mb-1">Unlock the balance</p>
-          <p className="text-white border rounded-lg p-2">${user.lockedBalance.toFixed(2)}</p>
+          <p className="text-sm text-white mb-1">Locked the balance</p>
+          <p className="text-white border rounded-lg p-2">{user.lockedBalance.toFixed(2)}</p>
         </div>
       </div>
     </div>

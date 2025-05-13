@@ -33,7 +33,7 @@ export default function SignInPage() {
     <div className="flex items-center justify-center min-h-screen bg-[#111111]">
       <div className="bg-[#000000] p-8 rounded-lg shadow-md w-96 text-center">
         <h2 className="text-2xl  text-white font-bold mb-6">Sign in to Your Account</h2>
-
+         
         {/* Phone + Password Sign-In */}
         <input
           type="text"

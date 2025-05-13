@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@repo/ui/button";
@@ -66,9 +66,9 @@ export function P2P() {
     }
 
     try {
-      await p2pTransfer(number, amount); 
+      await p2pTransfer(number, amount);
       setIsSuccess(true);
-      setSuccessMessage(`Successfully sent ${amount} to ${number}`);
+      setSuccessMessage(`Successfully sent ₹${amount} to ${number}`);
       setTimeout(() => {
         setIsSuccess(false);
         setNumber("");
@@ -78,15 +78,31 @@ export function P2P() {
       }, 3000);
     } catch (error) {
       console.error("Transfer error:", error);
+      setIsSuccess(false);
       setSuccessMessage("Transfer failed. Try again.");
+      setTimeout(() => {
+        setSuccessMessage("");
+      }, 3000);
     }
   };
 
   return (
-    <div className="h-[90vh]">
+    <div className="h-[90vh] relative">
+      {/* Top-right toast message */}
+      {successMessage && (
+        <div
+          className={`fixed top-5 right-5 px-4 py-2 rounded-md shadow-lg z-50 text-sm font-medium
+            ${isSuccess ? "bg-green-600 text-white" : "bg-red-500 text-white"}`}
+        >
+          {successMessage}
+        </div>
+      )}
+
       <Center>
         <Card title="Send">
           <div className="min-w-72 pt-2">
+            {isSuccess && <Confetti width={windowWidth} height={windowHeight} />}
+
             <TextInput
               placeholder="Enter Number Or Name"
               label="Recipient"
@@ -120,16 +136,10 @@ export function P2P() {
               placeholder="Amount"
               label="Amount"
               onChange={(value) => setAmount(Number(value))}
-              // value={amount}
             />
+
             <div className="pt-4 flex justify-center">
               <Button onClick={handleTransfer}>{isSuccess ? "Sent" : "Send"}</Button>
-              {isSuccess && <Confetti width={windowWidth} height={windowHeight} />}
-              {successMessage && (
-                <div className="text-center text-green-500 mt-4">
-                  {successMessage}
-                </div>
-              )}
             </div>
           </div>
         </Card>
